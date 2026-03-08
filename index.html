@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Quality Assurance Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F6F2;
+      --ink: #1A1A1A;
+      --muted: #888;
+      --accent: #2D6A4F;
+      --accent-light: #D8ECD4;
+      --border: #E0DFDA;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 6vw;
+      background: rgba(247,246,242,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 7rem 6vw; }
+    .container { max-width: 960px; margin: 0 auto; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: 960px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.35rem 0.85rem;
+      border-radius: 2rem;
+      margin-bottom: 1.4rem;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+    }
+    .hero-name em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      color: #555;
+      font-size: 1.02rem;
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--ink);
+      color: var(--white);
+      padding: 0.8rem 1.8rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+      margin-left: 0.8rem;
+    }
+    .btn-outline:hover { background: var(--ink); color: var(--white); }
+
+    .hero-visual {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.4rem 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .stat-card:nth-child(2) { margin-left: 2rem; }
+    .stat-card:nth-child(3) { margin-left: 4rem; }
+    .stat-icon {
+      font-size: 1.5rem;
+      width: 44px; height: 44px;
+      background: var(--accent-light);
+      border-radius: 0.6rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 1.5rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em; }
+
+    /* ─── SECTION HEADER ─── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .section-desc { color: #666; max-width: 520px; margin-bottom: 3rem; }
+
+    /* ─── ABOUT ─── */
+    #about { border-bottom: 1px solid var(--border); background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { color: #555; margin-bottom: 1rem; }
+    .about-values { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .value-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+    }
+    .value-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.5rem; flex-shrink: 0;
+    }
+    .value-title { font-weight: 500; font-size: 0.9rem; }
+    .value-desc { font-size: 0.82rem; color: var(--muted); }
+    .about-photo-placeholder {
+      background: var(--accent-light);
+      border-radius: 1.2rem;
+      height: 360px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      border: 1px dashed #b5d6c8;
+      color: var(--accent);
+    }
+    .about-photo-placeholder span { font-size: 2.5rem; }
+    .about-photo-placeholder p { font-size: 0.8rem; opacity: 0.7; }
+
+    /* ─── SKILLS ─── */
+    #skills { border-bottom: 1px solid var(--border); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-card-icon {
+      font-size: 1.6rem; margin-bottom: 0.8rem;
+      width: 48px; height: 48px;
+      background: var(--accent-light);
+      border-radius: 0.6rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .skill-card-title { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: #555;
+    }
+
+    /* ─── EXPERIENCE ─── */
+    #experience { border-bottom: 1px solid var(--border); background: var(--white); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 0; top: 0.5rem; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before {
+      content: ''; position: absolute;
+      left: -2.35rem; top: 0.45rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .timeline-date {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .timeline-role { font-weight: 500; font-size: 1.05rem; }
+    .timeline-company { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.6rem; }
+    .timeline-desc { color: #555; font-size: 0.9rem; }
+    .timeline-bullets { list-style: none; margin-top: 0.5rem; }
+    .timeline-bullets li {
+      font-size: 0.87rem; color: #666;
+      padding-left: 1rem; position: relative; margin-bottom: 0.3rem;
+    }
+    .timeline-bullets li::before {
+      content: '→'; position: absolute; left: 0; color: var(--accent);
+    }
+
+    /* ─── PROJECTS ─── */
+    #projects { border-bottom: 1px solid var(--border); }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .project-card.featured { grid-column: span 2; }
+    .project-thumb {
+      height: 160px;
+      background: linear-gradient(135deg, var(--accent-light) 0%, #b7ddc8 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-card.featured .project-thumb { height: 200px; }
+    .project-body { padding: 1.4rem 1.6rem; }
+    .project-type {
+      font-size: 0.68rem; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.4rem;
+    }
+    .project-title { font-weight: 500; font-size: 1rem; margin-bottom: 0.5rem; }
+    .project-desc { font-size: 0.85rem; color: #666; margin-bottom: 1rem; }
+    .project-footer {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .project-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .project-link {
+      font-size: 0.78rem; font-weight: 500; color: var(--accent);
+      text-decoration: none; letter-spacing: 0.04em;
+    }
+    .project-link:hover { text-decoration: underline; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--ink); color: var(--white); }
+    #contact .section-label { color: #7ec8a4; }
+    #contact .section-title { color: var(--white); }
+    #contact .section-desc { color: #aaa; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.3rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0.8rem;
+      margin-bottom: 0.8rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-item:hover { border-color: #7ec8a4; background: rgba(126,200,164,0.07); }
+    .contact-icon {
+      width: 38px; height: 38px; border-radius: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-label { font-size: 0.7rem; color: #888; letter-spacing: 0.06em; text-transform: uppercase; }
+    .contact-value { font-size: 0.9rem; }
+    .contact-cta h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem; margin-bottom: 1rem;
+    }
+    .contact-cta p { color: #aaa; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .btn-light {
+      background: var(--white); color: var(--ink);
+    }
+    .btn-light:hover { background: #7ec8a4; color: var(--ink); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #111;
+      color: #555;
+      text-align: center;
+      padding: 1.8rem 6vw;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    footer a { color: #7ec8a4; text-decoration: none; }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 5vw; }
+      .nav-links { display: none; }
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      .stat-card:nth-child(2), .stat-card:nth-child(3) { margin-left: 0; }
+    }
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      section { padding: 5rem 5vw; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Your Name.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="fade-in">
+      <span class="hero-tag">Quality Assurance Engineer</span>
+      <h1 class="hero-name">Hi, I'm <em>Your Name</em> — I make sure software <em>works.</em></h1>
+      <p class="hero-desc">Passionate about delivering flawless user experiences through meticulous testing, automation, and quality processes.</p>
+      <div>
+        <a href="#projects" class="btn">View Projects ↓</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-in" style="transition-delay:0.2s">
+      <div class="stat-card">
+        <div class="stat-icon">🧪</div>
+        <div>
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years in QA</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Test Cases Written</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🤖</div>
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Projects Tested</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Quality is not an act,<br>it is a <em style="font-style:italic;color:var(--accent)">habit.</em></h2>
+        <p>Saya adalah seorang Quality Assurance Engineer dengan pengalaman dalam memastikan kualitas software melalui pengujian manual maupun otomatis. Saya percaya bahwa bug yang ditemukan lebih awal adalah bug yang terselesaikan dengan baik.</p>
+        <p>Detail-oriented dan terstruktur, saya bekerja erat bersama developer dan product manager untuk memahami kebutuhan pengguna dan mentranslasikan itu ke dalam skenario uji yang komprehensif.</p>
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <div>
+              <div class="value-title">Precision First</div>
+              <div class="value-desc">Setiap test case dibuat dengan seksama agar tidak ada celah yang terlewat.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <div>
+              <div class="value-title">Automation Mindset</div>
+              <div class="value-desc">Mengotomatiskan pengujian repetitif untuk efisiensi jangka panjang.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <div>
+              <div class="value-title">Collaborative</div>
+              <div class="value-desc">QA bukan gatekeeper — saya partner aktif dalam proses development.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-photo-placeholder">
+        <span>🖼️</span>
+        <p>Ganti dengan foto Anda</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Skills</p>
+      <h2 class="section-title">My Toolkit</h2>
+      <p class="section-desc">Alat dan metode yang saya gunakan untuk memastikan kualitas dari setiap produk.</p>
+    </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-card">
+        <div class="skill-card-icon">🔍</div>
+        <div class="skill-card-title">Manual Testing</div>
+        <p style="font-size:0.82rem;color:#777;margin-top:0.3rem">Exploratory, regression, smoke, dan sanity testing dengan pendekatan sistematis.</p>
+        <div class="skill-tags">
+          <span class="tag">Test Case Design</span>
+          <span class="tag">Bug Reporting</span>
+          <span class="tag">Regression</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🤖</div>
+        <div class="skill-card-title">Test Automation</div>
+        <p style="font-size:0.82rem;color:#777;margin-top:0.3rem">Membangun framework automation untuk web dan API testing.</p>
+        <div class="skill-tags">
+          <span class="tag">Selenium</span>
+          <span class="tag">Cypress</span>
+          <span class="tag">Playwright</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">⚡</div>
+        <div class="skill-card-title">API Testing</div>
+        <p style="font-size:0.82rem;color:#777;margin-top:0.3rem">Validasi endpoint REST dan GraphQL dengan skenario positif & negatif.</p>
+        <div class="skill-tags">
+          <span class="tag">Postman</span>
+          <span class="tag">REST Assured</span>
+          <span class="tag">Newman</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">📊</div>
+        <div class="skill-card-title">Performance Testing</div>
+        <p style="font-size:0.82rem;color:#777;margin-top:0.3rem">Load dan stress testing untuk memastikan sistem stabil di bawah tekanan.</p>
+        <div class="skill-tags">
+          <span class="tag">JMeter</span>
+          <span class="tag">k6</span>
+          <span class="tag">Gatling</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🗂️</div>
+        <div class="skill-card-title">Test Management</div>
+        <p style="font-size:0.82rem;color:#777;margin-top:0.3rem">Mengelola test plan, siklus QA, dan pelaporan kualitas secara menyeluruh.</p>
+        <div class="skill-tags">
+          <span class="tag">Jira</span>
+          <span class="tag">TestRail</span>
+          <span class="tag">Zephyr</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🔄</div>
+        <div class="skill-card-title">CI/CD & Agile</div>
+        <p style="font-size:0.82rem;color:#777;margin-top:0.3rem">Integrasi QA dalam pipeline CI/CD dan kolaborasi dalam tim agile.</p>
+        <div class="skill-tags">
+          <span class="tag">Jenkins</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Scrum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Work History</h2>
+      <p class="section-desc">Perjalanan karir saya di dunia Quality Assurance.</p>
+    </div>
+    <div class="timeline fade-in">
+      <div class="timeline-item">
+        <div class="timeline-date">2022 — Present</div>
+        <div class="timeline-role">QA Engineer</div>
+        <div class="timeline-company">PT. Nama Perusahaan · Yogyakarta</div>
+        <ul class="timeline-bullets">
+          <li>Membuat dan mengelola lebih dari 300 test case untuk aplikasi mobile dan web</li>
+          <li>Membangun automation framework menggunakan Cypress yang mengurangi waktu regression testing sebesar 60%</li>
+          <li>Berkolaborasi dengan tim developer dalam daily standup dan sprint planning</li>
+          <li>Melakukan API testing menggunakan Postman untuk 15+ microservices</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2021 — 2022</div>
+        <div class="timeline-role">Junior QA Analyst</div>
+        <div class="timeline-company">PT. Nama Lain · Remote</div>
+        <ul class="timeline-bullets">
+          <li>Melakukan manual testing untuk fitur-fitur baru pada aplikasi e-commerce</li>
+          <li>Menulis laporan bug yang komprehensif di Jira dengan tingkat reproducibility tinggi</li>
+          <li>Menyusun test plan dan test scenario berdasarkan dokumen requirement</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2020 — 2021</div>
+        <div class="timeline-role">QA Intern</div>
+        <div class="timeline-company">Startup X · Yogyakarta</div>
+        <ul class="timeline-bullets">
+          <li>Belajar dan menerapkan teknik black-box testing secara langsung</li>
+          <li>Membantu tim QA dalam regression testing sebelum setiap release</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Projects</p>
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-desc">Beberapa proyek QA yang pernah saya kerjakan.</p>
+    </div>
+    <div class="projects-grid fade-in">
+
+      <div class="project-card featured">
+        <div class="project-thumb">🛒</div>
+        <div class="project-body">
+          <div class="project-type">Web Automation · Featured</div>
+          <div class="project-title">E-Commerce Platform — End-to-End Automation Suite</div>
+          <p class="project-desc">Membangun automation suite lengkap untuk platform e-commerce dengan 200+ test case yang mencakup checkout flow, payment gateway, dan user management. Berhasil menemukan 45 critical bugs sebelum go-live.</p>
+          <div class="project-footer">
+            <div class="project-stack">
+              <span class="tag">Cypress</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Allure Report</span>
+            </div>
+            <a href="#" class="project-link">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">📱</div>
+        <div class="project-body">
+          <div class="project-type">Mobile Testing</div>
+          <div class="project-title">Mobile Banking App QA</div>
+          <p class="project-desc">Pengujian menyeluruh untuk aplikasi mobile banking meliputi transfer, top-up, dan fitur keamanan.</p>
+          <div class="project-footer">
+            <div class="project-stack">
+              <span class="tag">Appium</span>
+              <span class="tag">TestRail</span>
+              <span class="tag">BrowserStack</span>
+            </div>
+            <a href="#" class="project-link">View →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">🔌</div>
+        <div class="project-body">
+          <div class="project-type">API Testing</div>
+          <div class="project-title">Microservices API Test Collection</div>
+          <p class="project-desc">Koleksi Postman dengan 150+ request untuk menguji 12 microservices beserta Newman CI integration.</p>
+          <div class="project-footer">
+            <div class="project-stack">
+              <span class="tag">Postman</span>
+              <span class="tag">Newman</span>
+              <span class="tag">Jenkins</span>
+            </div>
+            <a href="#" class="project-link">View →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid fade-in">
+      <div>
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Let's Work<br>Together.</h2>
+        <p class="section-desc">Terbuka untuk peluang baru, kolaborasi, atau sekadar ngobrol tentang QA. Jangan ragu menghubungi saya!</p>
+        <a href="mailto:email@example.com" class="btn btn-light">Send Email ↗</a>
+      </div>
+      <div class="contact-cta">
+        <a href="mailto:email@example.com" class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">email@example.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/yourprofile</div>
+          </div>
+        </a>
+        <a href="https://github.com/yourusername" target="_blank" class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/yourusername</div>
+          </div>
+        </a>
+        <a href="https://wa.me/6281234567890" target="_blank" class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+62 812 3456 7890</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <a href="#">Your Name</a> · Quality Assurance Engineer · Made with care.</p>
+</footer>
+
+<!-- SCROLL ANIMATION -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
